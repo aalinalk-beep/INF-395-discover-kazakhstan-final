@@ -1,114 +1,114 @@
 ---
 # Discover Kazakhstan - Backend Documentation
 
-## Оглавление
-1.  [Обзор проекта](#1-обзор-проекта)
-2.  [Технологический стек](#2-технологический-стек)
-3.  [Настройка локального окружения](#3-настройка-локального-окружения)
-4.  [Запуск приложения](#4-запуск-приложения)
-5.  [Структура проекта](#5-структура-проекта)
-6.  [Документация по API эндпоинтам](#6-документация-по-api-эндпоинтам)
-    - [Аутентификация](#61-аутентификация)
-    - [Отели и Отзывы](#62-отели-и-отзывы)
-    - [Направления](#63-направления)
-    - [Бронирования](#64-бронирования)
-7.  [Панель администратора](#7-панель-администратора)
+## Table of contents
+1. [Project Overview](#1-project overview)
+2. [Technology Stack](#2-technology stack)
+3. [Setting up the local environment](#3-setting up the local environment)
+4. [Application Launch](#4-application launch)
+5. [Project Structure] (#5-project structure)
+6. [API Endpoint Documentation](#6-api endpoint documentation)
+- [Authentication](#61-authentication)
+- [Hotels and Reviews](#62-hotels and Reviews)
+- [Destinations](#63-destinations)
+- [Bookings](#64-Reservations)
+7.  [Admin Panel](#7-Admin panel)
 
 ---
 
-## 1. Обзор проекта
+## 1. Project Overview
 
-Это бэкенд-сервис для туристического приложения "Discover Kazakhstan". Он предоставляет REST API для управления пользователями, отелями, направлениями, отзывами и бронированиями. Бэкенд построен на Django и Django REST Framework и использует JWT для аутентификации.
+This is a backend service for the Discover Kazakhstan travel app. It provides a REST API for managing users, hotels, destinations, reviews, and bookings. The backend is built on Django and Django REST Framework and uses JWT for authentication.
 
-## 2. Технологический стек
+## 2. Technology stack
 
--   **Фреймворк**: Django
--   **API**: Django REST Framework
--   **Аутентификация**: djangorestframework-simplejwt (JWT токены)
--   **CORS**: django-cors-headers
--   **База данных**: SQLite 
--   **Язык**: Python 3
+- **Framework**: Django
+- **API**: Django REST Framework
+- **Authentication**: djangorestframework-simplejwt (JWT tokens)
+- **CORS**: django-cors-headers
+- **Database**: SQLite 
+- **Language**: Python 3
 
-## 3. Настройка локального окружения
+## 3. Setting up the local environment
 
-### Предварительные требования
+### Preliminary requirements
 -   Python 3.8+
--   `pip` (менеджер пакетов Python)
--   `virtualenv` (рекомендуется)
+-   `pip` 
+-   `virtualenv` 
 
-### Шаги по установке
+### Installation Steps
 
-1.  **Клонируйте репозиторий:**
+1.  **Clone the repository:**
     ```bash
     git clone <your-repository-url>
     cd discover-kaz-backend
     ```
 
-2.  **Создайте и активируйте виртуальное окружение:**
+2.  **Create and activate a virtual environment:**
     ```bash
-    # Создание .venv
+    # Create .venv
     python -m venv .venv
 
-    # Активация на macOS / Linux
+    # Activation on macOS / Linux
     source .venv/bin/activate
 
-    # Активация на Windows
+    # Activation on Windows
     .\.venv\Scripts\activate
     ```
 
-3.  **Установите зависимости:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+3. **Install the dependencies:**
+``bash
+pip install -r requirements.txt
+``
 
-4.  **Примените миграции базы данных:**
-    Эта команда создаст таблицы в базе данных на основе моделей Django.
+4.  **Apply database migrations:**
+    This command will create tables in the database based on Django models.
     ```bash
     python manage.py migrate
     ```
 
-5.  **Создайте суперпользователя:**
-    Это необходимо для доступа к панели администратора Django.
+5. **Create a superuser:**
+This is necessary to access the Django admin panel.
     ```bash
     python manage.py createsuperuser
     ```
-    Следуйте инструкциям в терминале для создания пользователя.
+    Follow the instructions in the terminal to create a user.
 
-## 4. Запуск приложения
+##4. Launching the app
 
-Для запуска сервера для разработки выполните команду:
-```bash
+To start the development server, run the command:
+``bash
 python manage.py runserver
-```
-Сервер будет доступен по адресу `http://127.0.0.1:8000/`.
+``
+The server will be available at `http://127.0.0.1:8000 /`.
 
-## 5. Структура проекта
+## 5. Project Structure
 
 ```
 discover-kaz-backend/
-├── .venv/                  # Виртуальное окружение
-├── discover_kaz_backend/   # Главная конфигурация проекта
-│   ├── settings.py         # Настройки проекта
-│   └── urls.py             # Корневая маршрутизация URL
-├── users/                  # Приложение для пользователей и аутентификации
-├── hotels/                 # Приложение для отелей и отзывов
-├── destinations/           # Приложение для туристических направлений
-├── bookings/               # Приложение для бронирований
-├── manage.py               # Утилита для управления проектом
-└── requirements.txt        # Список зависимостей
+├── .venv/                  # Virtual environment
+,── discover_kaz_backend/ # Main project configuration
+│   ├── settings.py # Project Settings
+,── urls.py # Root URL routing
+├── users/                  # An application for users and authentication
+├── hotels/                 # An app for hotels and reviews
+├── destinations/           # Application for tourist destinations
+├── bookings/               # Booking app
+├── manage.py # Project Management Utility
+,── requirements.txt # List of dependencies
 ```
 
-## 6. Документация по API эндпоинтам
+## 6. API Endpoint Documentation
 
-**Базовый URL:** `http://localhost:8000/api`
+**Base URL:** `http://localhost:8000/api`
 
-### 6.1. Аутентификация
+### 6.1. Authentication
 
-Эндпоинты для управления пользователями и сессиями.
+Endpoints for managing users and sessions.
 
 #### `POST /auth/register/`
-Регистрация нового пользователя.
--   **Аутентификация:** Не требуется.
+Registration of a new user.
+- **Authentication:** Not required.
 -   **Request Body:**
     ```json
     {
@@ -125,8 +125,8 @@ discover-kaz-backend/
     ```
 
 #### `POST /auth/login/`
-Вход пользователя и получение JWT токенов.
--   **Аутентификация:** Не требуется.
+User login and receipt of JWT tokens.
+- **Authentication:** Not required.
 -   **Request Body:**
     ```json
     {
@@ -148,8 +148,8 @@ discover-kaz-backend/
     ```
 
 #### `GET /auth/user/`
-Получение информации о текущем аутентифицированном пользователе.
--   **Аутентификация:** Требуется (Bearer Token).
+Getting information about the currently authenticated user.
+- **Authentication:** Required (Bearer Token).
 -   **Headers:** `Authorization: Bearer <access_token>`
 -   **Success Response (200 OK):**
     ```json
@@ -161,8 +161,8 @@ discover-kaz-backend/
     ```
 
 #### `POST /auth/logout/`
-Выход пользователя (добавление refresh токена в черный список).
--   **Аутентификация:** Требуется (Bearer Token).
+User logout (adding refresh token to the blacklist).
+- **Authentication:** Required (Bearer Token).
 -   **Request Body:**
     ```json
     {
@@ -176,11 +176,11 @@ discover-kaz-backend/
     }
     ```
 
-### 6.2. Отели и Отзывы
+### 6.2. Hotels and Reviews
 
 #### `GET /hotels/`
-Получение списка всех отелей с пагинацией.
--   **Аутентификация:** Не требуется.
+Getting a list of all hotels with pagination.
+- **Authentication:** Not required.
 -   **Success Response (200 OK):**
     ```json
     {
@@ -196,8 +196,8 @@ discover-kaz-backend/
     ```
 
 #### `GET /hotels/{id}/`
-Получение детальной информации об одном отеле.
--   **Аутентификация:** Не требуется.
+Getting detailed information about one hotel.
+- **Authentication:** Not required.
 -   **Success Response (200 OK):**
     ```json
     {
@@ -206,8 +206,8 @@ discover-kaz-backend/
     ```
 
 #### `GET /hotels/{id}/reviews/`
-Получение списка отзывов для конкретного отеля.
--   **Аутентификация:** Не требуется.
+Getting a list of reviews for a specific hotel.
+- **Authentication:** Not required.
 -   **Success Response (200 OK):**
     ```json
     {
@@ -223,8 +223,8 @@ discover-kaz-backend/
     ```
 
 #### `POST /reviews/`
-Создание нового отзыва.
--   **Аутентификация:** Требуется (Bearer Token).
+Create a new review.
+- **Authentication:** Required (Bearer Token).
 -   **Request Body:**
     ```json
     {
@@ -234,30 +234,30 @@ discover-kaz-backend/
       "content": "Loved this hotel..."
     }
     ```
--   **Success Response (201 Created):** JSON с данными созданного отзыва.
+-   **Success Response (201 Created):** JSON with the data of the created review.
 
-### 6.3. Направления
+### 6.3. Directions
 
 #### `GET /destinations/`
-Получение списка всех направлений.
--   **Аутентификация:** Не требуется.
--   **Success Response (200 OK):** Список объектов направлений в поле `results`.
+Getting a list of all directions.
+- **Authentication:** Not required.
+-   **Success Response (200 OK):** A list of destination objects in the 'results` field.
 
 #### `GET /destinations/{id}/`
-Получение детальной информации об одном направлении.
--   **Аутентификация:** Не требуется.
--   **Success Response (200 OK):** JSON-объект с данными направления.
+Getting detailed information about one direction.
+- **Authentication:** Not required.
+-   **Success Response (200 OK):** A JSON object with direction data.
 
-### 6.4. Бронирования
+### 6.4. Reservations
 
 #### `GET /bookings/`
-Получение списка бронирований текущего пользователя.
--   **Аутентификация:** Требуется (Bearer Token).
--   **Success Response (200 OK):** Список объектов бронирований в поле `results`.
+Getting a list of the current user's bookings.
+- **Authentication:** Required (Bearer Token).
+-   **Success Response (200 OK):** A list of booking objects in the 'results` field.
 
 #### `POST /bookings/`
-Создание нового бронирования.
--   **Аутентификация:** Требуется (Bearer Token).
+Create a new booking.
+- **Authentication:** Required (Bearer Token).
 -   **Request Body:**
     ```json
     {
@@ -270,11 +270,11 @@ discover-kaz-backend/
       "guest_name": "John Doe"
     }
     ```
--   **Success Response (201 Created):** JSON с данными созданного бронирования (статус `pending`).
+-   **Success Response (201 Created):** JSON with the data of the created booking (status `pending').
 
 #### `POST /bookings/{id}/cancel/`
-Отмена бронирования. Статус меняется на `cancelled`.
--   **Аутентификация:** Требуется (Bearer Token).
+Cancellation of the booking. The status changes to `cancelled`.
+- **Authentication:** Required (Bearer Token).
 -   **Success Response (200 OK):**
     ```json
     {
