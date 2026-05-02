@@ -258,22 +258,22 @@ http://localhost:5173
 After running seed_data, the database contains sample tourism data.
 
 Tourist Destinations
-* Charyn Canyon
-* Big Almaty Lake
-* Medeu Ice Skating Rink
-* Altyn-Emel National Park
-* Kolsai Lakes
-* Hotels
-* The Ritz-Carlton, Almaty
-* InterContinental Almaty
-* Rixos Almaty Hotel
-* Hotel Dostyk
-* Hotel Kazakhstan
-* Shymbulak Mountain Resort
-* Events
-* Almaty Marathon 2025
-* Spirit of Tengri
-* Apple Fest
+- Charyn Canyon
+- Big Almaty Lake
+- Medeu Ice Skating Rink
+- Altyn-Emel National Park
+- Kolsai Lakes
+- Hotels
+- The Ritz-Carlton, Almaty
+- InterContinental Almaty
+- Rixos Almaty Hotel
+- Hotel Dostyk
+- Hotel Kazakhstan
+- Shymbulak Mountain Resort
+- Events
+- Almaty Marathon 2025
+- Spirit of Tengri
+- Apple Fest
 
 The project also includes image files in the backend media folder.
 
@@ -285,3 +285,29 @@ Authentication
 | POST   | `/api/auth/login/`    | Login user and receive JWT token |
 | POST   | `/api/auth/logout/`   | Logout user                      |
 | GET    | `/api/auth/user/`     | Get current authenticated user   |
+Hotels
+| Method | Endpoint                    | Description       |
+| ------ | --------------------------- | ----------------- |
+| GET    | `/api/hotels/`              | Get all hotels    |
+| GET    | `/api/hotels/{id}/`         | Get hotel details |
+| GET    | `/api/hotels/{id}/reviews/` | Get hotel reviews |
+Destinations
+| Method | Endpoint                  | Description             |
+| ------ | ------------------------- | ----------------------- |
+| GET    | `/api/destinations/`      | Get all destinations    |
+| GET    | `/api/destinations/{id}/` | Get destination details |
+Events
+| Method | Endpoint       | Description                         |
+| ------ | -------------- | ----------------------------------- |
+| GET    | `/api/events/` | Get all events with map coordinates |
+Bookings
+Authorization is required.
+| Method | Endpoint              | Description               |
+| ------ | --------------------- | ------------------------- |
+| GET    | `/api/bookings/`      | Get current user bookings |
+| POST   | `/api/bookings/`      | Create booking            |
+| DELETE | `/api/bookings/{id}/` | Cancel booking            |
+Reviews
+| Method | Endpoint        | Description         |
+| ------ | --------------- | ------------------- |
+| POST   | `/api/reviews/` | Create hotel review |
