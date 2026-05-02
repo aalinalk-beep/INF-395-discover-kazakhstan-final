@@ -285,21 +285,25 @@ Authentication
 | POST   | `/api/auth/login/`    | Login user and receive JWT token |
 | POST   | `/api/auth/logout/`   | Logout user                      |
 | GET    | `/api/auth/user/`     | Get current authenticated user   |
+
 Hotels
 | Method | Endpoint                    | Description       |
 | ------ | --------------------------- | ----------------- |
 | GET    | `/api/hotels/`              | Get all hotels    |
 | GET    | `/api/hotels/{id}/`         | Get hotel details |
 | GET    | `/api/hotels/{id}/reviews/` | Get hotel reviews |
+
 Destinations
 | Method | Endpoint                  | Description             |
 | ------ | ------------------------- | ----------------------- |
 | GET    | `/api/destinations/`      | Get all destinations    |
 | GET    | `/api/destinations/{id}/` | Get destination details |
+
 Events
 | Method | Endpoint       | Description                         |
 | ------ | -------------- | ----------------------------------- |
 | GET    | `/api/events/` | Get all events with map coordinates |
+
 Bookings
 Authorization is required.
 | Method | Endpoint              | Description               |
@@ -307,6 +311,7 @@ Authorization is required.
 | GET    | `/api/bookings/`      | Get current user bookings |
 | POST   | `/api/bookings/`      | Create booking            |
 | DELETE | `/api/bookings/{id}/` | Cancel booking            |
+
 Reviews
 | Method | Endpoint        | Description         |
 | ------ | --------------- | ------------------- |
